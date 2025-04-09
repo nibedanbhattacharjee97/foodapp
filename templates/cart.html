@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 16px;
+            color: #444;
+            background: #fafafa;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        p {
+            font-size: 18px;
+            text-align: right;
+            margin-top: 30px;
+            color: #222;
+            font-weight: bold;
+        }
+
+        .checkout-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            background-color: #e23744;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-button:hover {
+            background-color: #b81f2d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Your Cart</h2>
+    <ul>
+        {% for item in cart_items %}
+            <li>{{ item.name }} - ₹{{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    <p>Total: ₹{{ total }}</p>
+    <a class="checkout-button" href="{{ url_for('checkout') }}">Proceed to Checkout</a>
+</div>
+
+</body>
+</html>
